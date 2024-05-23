@@ -23,7 +23,7 @@ vet: ## Run go vet against code.
 	go vet ./...
 
 .PHONY: build-exporter
-build-exporter:
+build-exporter: generate-bpf-in-container
 	CGO_ENABLED=0 go build -o bin/inspector -ldflags $(ldflags) ./cmd/exporter
 
 .PHONY: build-skoop
